@@ -66,39 +66,30 @@ app.get("/auth", app_auth.auth)
 app.get("/sina_auth_cb", app_auth.sina_auth_cb)
 //中间页面，提醒用户认证成功
 app.get('/oauth', function (req, res) {
-    var config = {
-        app_key:"0bb4b9fc67f9b013231e2df537ed1039",
-        app_secret:"e7434521cb0c70ad",
-        redirect_uri:"http://localhost:8080/sina_auth_cb",
-        access_token:req.cookies.token
-    }
-    var api = new Douban(config);
-    api.note.publish({
-        title:"created by nodejs!",
-        privacy:"public",
-        can_reply:"true",
-        content:"this is content!",
-        layout_pid:"L"
-    },function(error,data){
-        console.log(data)
-    })
-    api.shuo.statuses({
-        source:config.app_key,
-        text:"hello nodejs 2"
-    },function(error,data){
-        console.log(data)
-    })
-    //    
-    //    api.note.like({
-    //        id:243112206
-    //    },function(error,data){
-    //        console.log(data)
-    //    })
-    //        api.note.get({
-    //        id:243112206
-    //    },function(error,data){
-    //        console.log(data)
-    //    })
+//    api.note.publish({
+//        title:"created by nodejs!",
+//        privacy:"public",
+//        can_reply:"true",
+//        content:"this is content!",
+//        layout_pid:"L"
+//    },function(error,data){
+//        console.log(data)
+//    })
+//    
+//    
+    
+res.render("oauth")
+//    
+//    api.note.like({
+//        id:243112206
+//    },function(error,data){
+//        console.log(data)
+//    })
+//        api.note.get({
+//        id:243112206
+//    },function(error,data){
+//        console.log(data)
+//    })
 //    api.note.setComment({
 //        id:"243112206",
 //        content:"test"
@@ -114,7 +105,7 @@ app.get('/oauth', function (req, res) {
 //    })
     
 });
-
+app.get("/shuo",require("./shuo.js"));
 
 
 
