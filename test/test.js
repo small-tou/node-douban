@@ -5,7 +5,7 @@ var config = {
     app_key:"0bb4b9fc67f9b013231e2df537ed1039",
     app_secret:"e7434521cb0c70ad",
     redirect_uri:"http://localhost:8080/sina_auth_cb",
-    api_group: ["note","shuo"]
+    api_group: ["note","shuo","photo","album"]
 }
 
 var app_auth = {
@@ -108,4 +108,5 @@ res.render("oauth")
 app.get("/shuo",require("./shuo.js"));
 
 
+app.get("/photo_upload",require("./photo_upload.js"));
 
